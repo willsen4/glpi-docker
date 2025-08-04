@@ -1,46 +1,53 @@
 ﻿
 # Instalado GLPI no Docker usando Docker Compose
 ### Esta é a forma mais organizada e recomendada, pois permite definir ambos os serviços (MySQL e GLPI) em um único arquivo. Se você já tem o MySQL rodando em um contêiner separado, você pode adaptá-lo para incluí-lo no docker-compose.yml ou simplesmente referenciar o serviço existente.
-
+--------
 ### Crie um diretório para o GLPI:
 ````Bash
 mkdir glpi-docker
 cd glpi-docker
 ````
+-----------
 ### Crie um arquivo docker-compose.yml:
 ````Bash
 nano docker-compose.yml
 ````
+----------
 ### Cole o conteúdo:
 YAML
 
 ### Salve e feche o arquivo. (Em nano, pressione Ctrl+X, depois Y e Enter).
-
+------------
 ### Acessar o Shell do contêiner MySQL 
 ````Bash   
 docker exec -it mysql-app mysql -uroot -p
 ````
+------------
 ### Depois crie o banco e o usuário:
 SQL
 ### Usar os comandos que estão no arquivo SQL.sql
-
+-----------
 ### Inspecionar a rede MySQL
 ````Bash
 docker inspect mysql-app | grep "IPAddress"
 ````
+----------
 ### Crie uma rede Docker
 ````Bash
 docker network create glpi_network
 ````
+----------
 #### Conecte seu contêiner MySQL a essa rede (se ele já estiver rodando):
 ````Bash
 docker network connect glpi_network mysql-app
 ````
+-----------
 ### Inicie os contêineres:
 ### No diretório onde você salvou o docker-compose.yml, execute:
 ````Bash
 docker compose up -d
 ````
+-----------
 ## Acesse o GLPI:
 ### Abra seu navegador e acesse o IP público da sua instância do Google Cloud: http://<IP_DA_SUA_INSTANCIA>. 
 ### O processo de instalação do GLPI será iniciado, e ele deverá se conectar automaticamente ao seu MySQL configurado.
@@ -74,4 +81,5 @@ docker exec -it glpi-app bash
 ````Bash
 rm install/install.php
 ````
+
 
