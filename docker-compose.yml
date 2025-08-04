@@ -1,0 +1,22 @@
+services:
+  glpi:
+    image: glpi/glpi:latest
+    container_name: glpi-app
+    ports:
+      - "8080:80" # Mapeia a porta 80 do contêiner para a porta 8080 do host
+    environment:
+      GLPI_DB_HOST: mysql-app # EXATAMENTE o nome do seu contêiner MySQL
+      GLPI_DB_PORT: 3306
+      GLPI_DB_NAME: glpi_db # Confirme que este é o nome do DB para o GLPI no seu MySQL
+      GLPI_DB_USER: glpi_user # Confirme este usuário no seu MySQL
+      GLPI_DB_PASSWORD: Infra2025 # Confirme esta senha no seu MySQL
+    volumes:
+      - glpi_data:/var/www/html # Usa o volume nomeado 'glpi_data'
+    networks:
+      - glpi_network
+networks:
+  glpi_network:
+    external: true # Indica que esta rede já existe
+    name: mysql_network # Use o nome da rede onde seu MySQL está
+volumes:
+  glpi_data: # Define o volume nomeado 'glpi_data'
