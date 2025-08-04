@@ -1,14 +1,3 @@
-#Pré-requisitos
-#Contêiner MySQL funcionando e acessível. Anote o nome do contêiner ou o IP interno, 
-#além das credenciais (usuário, senha, nome do banco de dados).
-
-#Docker e Docker Compose instalados (o Docker Compose facilita muito a orquestração de múltiplos contêineres).
-
-#Opção 1: Usando Docker Compose (Recomendado)
-#Esta é a forma mais organizada e recomendada, pois permite definir ambos os serviços 
-#(MySQL e GLPI) em um único arquivo. Se você já tem o MySQL rodando em um contêiner separado, 
-#você pode adaptá-lo para incluí-lo no docker-compose.yml ou simplesmente referenciar o serviço existente.
-
 #Crie um diretório para o GLPI:
 Bash
 mkdir glpi-docker
@@ -44,33 +33,6 @@ docker network connect glpi_network mysql-app
 #No diretório onde você salvou o docker-compose.yml, execute:
 Bash
 docker compose up -d
-
-#Acesse o GLPI:
-#Abra seu navegador e acesse o IP público da sua instância do Google Cloud: http://<IP_DA_SUA_INSTANCIA>. 
-#O processo de instalação do GLPI será iniciado, e ele deverá se conectar automaticamente ao seu MySQL configurado.
-
-#Pós-Instalação e Considerações Importantes
-#Configuração Inicial do GLPI: Após a conexão bem-sucedida com o banco de dados, 
-#o GLPI o guiará pelo restante do processo de instalação (verificação de requisitos, criação do banco de dados, etc.).
-
-#Credenciais Padrão: As credenciais padrão do GLPI após a instalação são:
-
-#Usuário: glpi
-
-#Senha: glpi
-
-#Por motivos de segurança, por favor remova o arquivo: install/install.php
-#Essa mensagem de "Por motivos de segurança, por favor remova o arquivo: install/install.php" 
-#significa que a instalação do GLPI foi concluída com sucesso!
-
-#Essa é uma medida de segurança padrão do GLPI e de muitas outras aplicações web. O arquivo install.php 
-#é usado apenas para a instalação inicial e, se deixado no servidor, poderia ser usado por 
-#pessoas mal-intencionadas para tentar reinstalar ou manipular sua aplicação.
-
-#Como Resolver
-#Você precisa remover o arquivo install.php do contêiner do GLPI. A forma mais fácil de fazer isso é através do terminal SSH da sua VM.
-
-#Conecte-se à sua VM via SSH.
 
 #Para remover o arquivo:
 
