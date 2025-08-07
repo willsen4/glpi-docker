@@ -1,5 +1,7 @@
 ﻿
 # Instalado GLPI no Docker usando Docker Compose
+## O GLPI é um sistema de código aberto para gestão de ativos de TI, suporte técnico e central de serviços.
+
 ### Esta é a forma mais organizada e recomendada, pois permite definir ambos os serviços (MySQL e GLPI) em um único arquivo. Se você já tem o MySQL rodando em um contêiner separado, você pode adaptá-lo para incluí-lo no docker-compose.yml ou simplesmente referenciar o serviço existente.
 --------
 ### Crie um diretório para o GLPI:
@@ -81,5 +83,6 @@ docker exec -it glpi-app bash
 ````Bash
 rm install/install.php
 ````
+
 
 
