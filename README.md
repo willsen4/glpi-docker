@@ -4,6 +4,21 @@
 
 ### Esta é a forma mais organizada e recomendada, pois permite definir ambos os serviços (MySQL e GLPI) em um único arquivo. Se você já tem o MySQL rodando em um contêiner separado, você pode adaptá-lo para incluí-lo no docker-compose.yml ou simplesmente referenciar o serviço existente.
 --------
+### Criar permissão na pasta:
+````Bash
+sudo mkdir -p /dados/data/glpi/glpi-app/documents \
+             /dados/data/glpi/glpi-app/imagens-custom \
+             /dados/data/glpi/glpi-app/plugins \
+             /dados/data/glpi/glpi-app/marketplace \
+             /dados/data/glpi/glpi-app/files/_pictures \
+             /dados/data/glpi/glpi-app/files/_plugins \
+             /dados/data/glpi/glpi-app/etc \
+             /dados/data/glpi/backup
+
+sudo chown -R 33:33 /dados/data/glpi/glpi-app
+sudo chmod -R 775 /dados/data/glpi/glpi-app
+````
+-------------
 ### Crie um diretório para o GLPI:
 ````Bash
 mkdir glpi-docker
@@ -13,20 +28,6 @@ cd glpi-docker
 ### Crie um arquivo docker-compose.yml:
 ````Bash
 nano docker-compose.yml
-````
-
-### Criar permissão na pasta:
-````Bash
-sudo mkdir -p /dados/data/glpi/glpi-app/documents \
-             /dados/data/glpi/glpi-app/imagens-custom \
-             /dados/data/glpi/glpi-app/plugins \
-             /dados/data/glpi/glpi-app/files/_pictures \
-             /dados/data/glpi/glpi-app/files/_plugins \
-             /dados/data/glpi/glpi-app/etc \
-             /dados/data/glpi/backup
-
-sudo chown -R 33:33 /dados/data/glpi/glpi-app
-sudo chmod -R 775 /dados/data/glpi/glpi-app
 ````
 ----------
 ### Cole o conteúdo:

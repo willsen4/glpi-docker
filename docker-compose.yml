@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   glpi:
     image: sdbrasil/glpi:10.0.17
@@ -17,6 +15,7 @@ services:
       - glpi_documents:/var/lib/glpi/files/data-documents
       - glpi_imagens_custom:/usr/share/glpi/pics/imagens-custom
       - glpi_plugins:/usr/share/glpi/plugins
+      - glpi_marketplace:/usr/share/glpi/marketplace
       - glpi_pictures:/var/lib/glpi/files/_pictures
       - glpi_plugins_files:/var/lib/glpi/files/_plugins
       - glpi_etc:/etc/glpi/
@@ -72,3 +71,9 @@ volumes:
       type: none
       o: bind
       device: /dados/data/glpi/backup
+  glpi_marketplace:
+  driver: local
+  driver_opts:
+    type: none
+    o: bind
+    device: /dados/data/glpi/glpi-app/marketplace
