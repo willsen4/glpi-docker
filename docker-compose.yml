@@ -1,22 +1,74 @@
+version: "3.8"
+
 services:
   glpi:
-    image: glpi/glpi:latest
+    image: sdbrasil/glpi:10.0.17
     container_name: glpi-app
+    restart: unless-stopped
     ports:
-      - "8080:80" # Mapeia a porta 80 do contêiner para a porta 8080 do host
+      - "8080:80"
     environment:
-      GLPI_DB_HOST: mysql-app # EXATAMENTE o nome do seu contêiner MySQL
+      GLPI_DB_HOST: mysql-app
       GLPI_DB_PORT: 3306
-      GLPI_DB_NAME: glpi_db # Confirme que este é o nome do DB para o GLPI no seu MySQL
-      GLPI_DB_USER: glpi_user # Confirme este usuário no seu MySQL
-      GLPI_DB_PASSWORD: sua_senha_forte # Confirme esta senha no seu MySQL
+      GLPI_DB_NAME: glpi_db
+      GLPI_DB_USER: glpi_user
+      GLPI_DB_PASSWORD: sua_senha_forte
     volumes:
-      - glpi_data:/var/www/html # Usa o volume nomeado 'glpi_data'
+      - glpi_documents:/var/lib/glpi/files/data-documents
+      - glpi_imagens_custom:/usr/share/glpi/pics/imagens-custom
+      - glpi_plugins:/usr/share/glpi/plugins
+      - glpi_pictures:/var/lib/glpi/files/_pictures
+      - glpi_plugins_files:/var/lib/glpi/files/_plugins
+      - glpi_etc:/etc/glpi/
+      - glpi_backup:/backup/
     networks:
       - glpi_network
+
 networks:
   glpi_network:
-    external: true # Indica que esta rede já existe
-    name: mysql_network # Use o nome da rede onde seu MySQL está
+    external: true
+    name: mysql_network  # Use o nome da rede do seu MySQL
+
 volumes:
-  glpi_data: # Define o volume nomeado 'glpi_data'
+  glpi_documents:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/documents
+  glpi_imagens_custom:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/imagens-custom
+  glpi_plugins:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/plugins
+  glpi_pictures:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/files/_pictures
+  glpi_plugins_files:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/files/_plugins
+  glpi_etc:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/glpi-app/etc
+  glpi_backup:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /dados/data/glpi/backup

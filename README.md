@@ -14,6 +14,20 @@ cd glpi-docker
 ````Bash
 nano docker-compose.yml
 ````
+
+### Criar permissão na pasta:
+````Bash
+sudo mkdir -p /dados/data/glpi/glpi-app/documents \
+             /dados/data/glpi/glpi-app/imagens-custom \
+             /dados/data/glpi/glpi-app/plugins \
+             /dados/data/glpi/glpi-app/files/_pictures \
+             /dados/data/glpi/glpi-app/files/_plugins \
+             /dados/data/glpi/glpi-app/etc \
+             /dados/data/glpi/backup
+
+sudo chown -R 33:33 /dados/data/glpi/glpi-app
+sudo chmod -R 775 /dados/data/glpi/glpi-app
+````
 ----------
 ### Cole o conteúdo:
 YAML
