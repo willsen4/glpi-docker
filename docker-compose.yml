@@ -1,6 +1,6 @@
 services:
   glpi:
-    image: sdbrasil/glpi:10.0.17
+    image: sdbrasil/glpi:10.0.19
     container_name: glpi-app
     restart: unless-stopped
     ports:
@@ -12,14 +12,12 @@ services:
       GLPI_DB_USER: glpi_user
       GLPI_DB_PASSWORD: sua_senha_forte
     volumes:
+      - glpi_config:/etc/glpi
       - glpi_documents:/var/lib/glpi/files/data-documents
-      - glpi_imagens_custom:/usr/share/glpi/pics/imagens-custom
       - glpi_plugins:/usr/share/glpi/plugins
       - glpi_marketplace:/usr/share/glpi/marketplace
-      - glpi_pictures:/var/lib/glpi/files/_pictures
-      - glpi_plugins_files:/var/lib/glpi/files/_plugins
-      - glpi_etc:/etc/glpi/
-      - glpi_backup:/backup/
+      - glpi_files_plugins:/var/lib/glpi/files/_plugins
+      - glpi_backup:/backup
     networks:
       - glpi_network
 
@@ -29,51 +27,9 @@ networks:
     name: mysql_network  # Use o nome da rede do seu MySQL
 
 volumes:
+  glpi_config:
   glpi_documents:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/documents
-  glpi_imagens_custom:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/imagens-custom
   glpi_plugins:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/plugins
-  glpi_pictures:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/files/_pictures
-  glpi_plugins_files:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/files/_plugins
-  glpi_etc:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/glpi-app/etc
-  glpi_backup:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /dados/data/glpi/backup
   glpi_marketplace:
-  driver: local
-  driver_opts:
-    type: none
-    o: bind
-    device: /dados/data/glpi/glpi-app/marketplace
+  glpi_files_plugins:
+  glpi_backup:
