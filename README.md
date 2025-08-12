@@ -6,20 +6,21 @@
 --------
 ### Criando os diretórios / volumes (Dados persistentes)
 ````Bash
-mkdir -p /data/glpi-app/glpi/documents
-mkdir -p /data/glpi-app/glpi/marketplace
-mkdir -p /data/glpi-app/glpi/plugins
-mkdir -p /data/glpi-app/glpi/files/_pictures
-mkdir -p /data/glpi-app/glpi/files/_plugins
-mkdir -p /data/glpi-app/glpi/etc
-mkdir -p /data/glpi-app/glpi/imagens-custom
-mkdir -p /data/glpi-app/backup
+sudo mkdir -p /data/glpi-app/glpi/documents
+sudo mkdir -p /data/glpi-app/glpi/marketplace
+sudo mkdir -p /data/glpi-app/glpi/plugins
+sudo mkdir -p /data/glpi-app/glpi/files/_pictures
+sudo mkdir -p /data/glpi-app/glpi/files/_plugins
+sudo mkdir -p /data/glpi-app/glpi/etc
+sudo mkdir -p /data/glpi-app/glpi/imagens-custom
+sudo mkdir -p /data/glpi-app/backup
 ````
 -------------
 ### Ajustando permissões do GLPI
 ````Bash
-chown 70:70 -R /data/glpi-app/glpi
-chown 1001:0 -R /data/glpi-app/percona
+sudo chown 70:70 -R /data/glpi-app/glpi
+sudo chown -R 33:33 /dados/data/glpi
+sudo chmod -R 775 /dados/data/glpi
 ````
 ----------------
 ### Acessar o Shell do contêiner MySQL 
