@@ -18,9 +18,8 @@ sudo mkdir -p /data/glpi-app/backup
 -------------
 ### Ajustando permissões do GLPI
 ````Bash
-sudo chown 70:70 -R /data/glpi-app/glpi
-sudo chown -R 33:33 /dados/data/glpi
-sudo chmod -R 775 /dados/data/glpi
+sudo chown -R 33:33 /data/glpi-app
+sudo chmod -R 775 /data/glpi-app
 ````
 ----------------
 ### Acessar o Shell do contêiner MySQL 

@@ -12,24 +12,18 @@ services:
       GLPI_DB_USER: glpi_user
       GLPI_DB_PASSWORD: sua_senha_forte
     volumes:
-      - glpi_config:/etc/glpi
-      - glpi_documents:/var/lib/glpi/files/data-documents
-      - glpi_plugins:/usr/share/glpi/plugins
-      - glpi_marketplace:/usr/share/glpi/marketplace
-      - glpi_files_plugins:/var/lib/glpi/files/_plugins
-      - glpi_backup:/backup
+      - /data/glpi-app/glpi/etc:/etc/glpi
+      - /data/glpi-app/glpi/documents:/var/lib/glpi/files/data-documents
+      - /data/glpi-app/glpi/plugins:/usr/share/glpi/plugins
+      - /data/glpi-app/glpi/marketplace:/usr/share/glpi/marketplace
+      - /data/glpi-app/glpi/files/_plugins:/var/lib/glpi/files/_plugins
+      - /data/glpi-app/glpi/files/_pictures:/var/lib/glpi/files/_pictures
+      - /data/glpi-app/glpi/imagens-custom:/var/lib/glpi/files/_custom
+      - /data/glpi-app/backup:/backup
     networks:
       - glpi_network
 
 networks:
   glpi_network:
     external: true
-    name: mysql_network  # Use o nome da rede do seu MySQL
-
-volumes:
-  glpi_config:
-  glpi_documents:
-  glpi_plugins:
-  glpi_marketplace:
-  glpi_files_plugins:
-  glpi_backup:
+    name: mysql_network
