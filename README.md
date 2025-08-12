@@ -89,19 +89,19 @@ docker compose up -d
 ### Essa é uma medida de segurança padrão do GLPI e de muitas outras aplicações web. O arquivo install.php é usado apenas para a instalação inicial e, se deixado no servidor, poderia ser usado por pessoas mal-intencionadas para tentar reinstalar ou manipular sua aplicação.
 
 ## Como Resolver
-### Você precisa remover o arquivo install.php do contêiner do GLPI. A forma mais fácil de fazer isso é através do terminal SSH da sua VM.
+### Você precisa remover ou renomear o arquivo install.php do contêiner do GLPI. A forma mais fácil de fazer isso é através do terminal SSH da sua VM.
 
 ### Conecte-se à sua VM via SSH.
 
-### Para remover o arquivo:
+### Para renomear o arquivo:
 
 ### Acesse o Shell do conteiner
 ````Bash
 docker exec -it glpi-app bash
 ````
-### Remove o arquivo
+### Renomear o arquivo
 ````Bash
-rm install/install.php
+mv /usr/share/glpi/install /usr/share/glpi/installOld
 ````
 
 
