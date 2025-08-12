@@ -7,6 +7,7 @@
 ### Criando os diretórios / volumes (Dados persistentes)
 ````Bash
 sudo mkdir -p /data/glpi-app/glpi/documents
+sudo mkdir -p /data/glpi-app/glpi/files/data-documents
 sudo mkdir -p /data/glpi-app/glpi/marketplace
 sudo mkdir -p /data/glpi-app/glpi/plugins
 sudo mkdir -p /data/glpi-app/glpi/files/_pictures
@@ -20,6 +21,8 @@ sudo mkdir -p /data/glpi-app/backup
 ````Bash
 sudo chown -R 33:33 /data/glpi-app
 sudo chmod -R 775 /data/glpi-app
+sudo chown -R 33:33 /data/glpi-app/glpi/files
+sudo chmod -R 775 /data/glpi-app/glpi/files
 ````
 ----------------
 ### Acessar o Shell do contêiner MySQL 
