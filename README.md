@@ -21,8 +21,6 @@ sudo mkdir -p /data/glpi-app/backup
 ````Bash
 sudo chown -R 33:33 /data/glpi-app
 sudo chmod -R 775 /data/glpi-app
-sudo chown -R 33:33 /data/glpi-app/glpi/files
-sudo chmod -R 775 /data/glpi-app/glpi/files
 ````
 ----------------
 ### Acessar o Shell do contêiner MySQL 
@@ -103,6 +101,7 @@ docker exec -it glpi-app bash
 ````Bash
 mv /usr/share/glpi/install /usr/share/glpi/installOld
 ````
+
 
 
 
