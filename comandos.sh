@@ -63,4 +63,3 @@ nano docker-compose.yml
 
 #Recria o conteiner
 docker compose up -d
-
