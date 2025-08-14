@@ -50,6 +50,8 @@ docker network connect glpi_network mysql-app
 ### Crie um diretório para o GLPI:
 ````Bash
 mkdir glpi-docker
+````
+````Bash
 cd glpi-docker
 ````
 -----------
@@ -101,6 +103,7 @@ docker exec -it glpi-app bash
 ````Bash
 mv /usr/share/glpi/install /usr/share/glpi/installOld
 ````
+
 
 
 
