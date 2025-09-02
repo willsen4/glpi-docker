@@ -68,7 +68,37 @@ nano docker-compose.yml
 ````
 --------------
 ### Cole o conteúdo:
-YAML
+````YAML
+services:
+  glpi:
+    image: sdbrasil/glpi:10.0.19
+    container_name: glpi-app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      GLPI_DB_HOST: mysql-app
+      GLPI_DB_PORT: 3306
+      GLPI_DB_NAME: glpi_db
+      GLPI_DB_USER: glpi_user
+      GLPI_DB_PASSWORD: sua_senha_forte
+    volumes:
+      - /data/glpi-app/glpi/etc:/etc/glpi
+      - /data/glpi-app/glpi/documents:/var/lib/glpi/files/data-documents
+      - /data/glpi-app/glpi/plugins:/usr/share/glpi/plugins
+      - /data/glpi-app/glpi/marketplace:/usr/share/glpi/marketplace
+      - /data/glpi-app/glpi/files/_plugins:/var/lib/glpi/files/_plugins
+      - /data/glpi-app/glpi/files/_pictures:/var/lib/glpi/files/_pictures
+      - /data/glpi-app/glpi/imagens-custom:/var/lib/glpi/files/_custom
+      - /data/glpi-app/backup:/backup
+    networks:
+      - glpi_network
+
+networks:
+  glpi_network:
+    external: true
+    name: mysql_network
+````
 ### Salve e feche o arquivo. (Em nano, pressione Ctrl+X, depois Y e Enter).
 ---------------
 ### Inicie os contêineres:
@@ -110,6 +140,7 @@ docker exec -it glpi-app bash
 ````Bash
 mv /usr/share/glpi/install /usr/share/glpi/installOld
 ````
+
 
 
 
