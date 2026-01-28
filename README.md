@@ -108,7 +108,7 @@ docker compose up -d
 ````
 -----------
 ## Acesse o GLPI:
-### Abra seu navegador e acesse o IP público da sua instância do Google Cloud: http://<IP_DA_SUA_INSTANCIA>. 
+### Abra seu navegador e acesse o IP da sua instância: http://<IP_DA_SUA_INSTANCIA>. 
 ### O processo de instalação do GLPI será iniciado, e ele deverá se conectar automaticamente ao seu MySQL configurado.
 
 ## Pós-Instalação e Considerações Importantes
@@ -140,6 +140,7 @@ docker exec -it glpi-app bash
 ````Bash
 mv /usr/share/glpi/install /usr/share/glpi/installOld
 ````
+
 
 
 
