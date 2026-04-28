@@ -23,7 +23,10 @@ sudo chown -R 33:33 /data/glpi-app
 sudo chmod -R 775 /data/glpi-app
 ````
 ----------------
-### Acessar o Shell do contêiner MySQL 
+### Criar banco de dados no Cliente MySQL já instalado no Docker
+https://github.com/willsen4/mysql-docker
+
+### Acessar o Shell do container MySQL 
 ````Bash   
 docker exec -it mysql-app mysql -uroot -p
 ````
@@ -49,7 +52,7 @@ docker inspect mysql-app | grep "IPAddress"
 docker network create glpi_network
 ````
 ----------
-#### Conecte seu contêiner MySQL a essa rede (se ele já estiver rodando):
+#### Conecte seu container MySQL a essa rede (se ele já estiver rodando):
 ````Bash
 docker network connect glpi_network mysql-app
 ````
@@ -101,7 +104,7 @@ networks:
 ````
 ### Salve e feche o arquivo. (Em nano, pressione Ctrl+X, depois Y e Enter).
 ---------------
-### Inicie os contêineres:
+### Inicie os containers:
 ### No diretório onde você salvou o docker-compose.yml, execute:
 ````Bash
 docker compose up -d
@@ -126,13 +129,13 @@ docker compose up -d
 ### Essa é uma medida de segurança padrão do GLPI e de muitas outras aplicações web. O arquivo install.php é usado apenas para a instalação inicial e, se deixado no servidor, poderia ser usado por pessoas mal-intencionadas para tentar reinstalar ou manipular sua aplicação.
 
 ## Como Resolver
-### Você precisa remover ou renomear o arquivo install.php do contêiner do GLPI. A forma mais fácil de fazer isso é através do terminal SSH da sua VM.
+### Você precisa remover ou renomear o arquivo install.php do container do GLPI. A forma mais fácil de fazer isso é através do terminal SSH da sua VM.
 
 ### Conecte-se à sua VM via SSH.
 
 ### Para renomear o arquivo:
 
-### Acesse o Shell do conteiner
+### Acesse o Shell do container
 ````Bash
 docker exec -it glpi-app bash
 ````
